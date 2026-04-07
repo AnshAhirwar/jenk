@@ -14,27 +14,23 @@ public class Hooks {
 
     public static ExtentReports extent;
 
-    // ✅ Start report (once before all tests)
     @BeforeAll
     public static void setupReport() {
-        extent = ExtentManager.getReport();
+        extent = ExtentManager.getInstance();   // ✅ use existing method
     }
 
-    // Existing setup
     @Before
     public void setUp() {
         DriverFactory.initDriver();
     }
 
-    // Existing teardown
     @After
     public void tearDown() {
         DriverFactory.quitDriver();
     }
 
-    // ✅ VERY IMPORTANT → write report to file
     @AfterAll
     public static void tearDownReport() {
-        extent.flush();
+        extent.flush();   // ✅ THIS creates the report
     }
 }
