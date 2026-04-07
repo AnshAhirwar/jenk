@@ -4,15 +4,13 @@ import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class ExtentManager {
+    public static ExtentReports getReport() {
+        ExtentSparkReporter spark =
+            new ExtentSparkReporter("reports/extent-report.html");
 
-    private static ExtentReports extent;
+        ExtentReports extent = new ExtentReports();
+        extent.attachReporter(spark);
 
-    public static ExtentReports getInstance() {
-        if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter("target/ExtentReport.html");
-            extent = new ExtentReports();
-            extent.attachReporter(reporter);
-        }
         return extent;
     }
 }
