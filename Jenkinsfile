@@ -6,12 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/AnshAhirwar/jenk.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean compile'
@@ -30,9 +24,7 @@ pipeline {
                     reportDir: 'reports',
                     reportFiles: 'extent-report.html',
                     reportName: 'Test Report',
-                    allowMissing: true,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true
+                    allowMissing: true
                 ])
             }
         }
