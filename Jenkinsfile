@@ -24,7 +24,9 @@ pipeline {
                     reportDir: 'reports',
                     reportFiles: 'extent-report.html',
                     reportName: 'Test Report',
-                    allowMissing: true
+                    keepAll: true,                   // ✅ REQUIRED
+                    alwaysLinkToLastBuild: true,     // ✅ REQUIRED
+                    allowMissing: true               // optional but useful
                 ])
             }
         }
